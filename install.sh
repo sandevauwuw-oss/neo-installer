@@ -6,7 +6,7 @@ REPO_URL="https://github.com/firllyfikaa/NEOBRUTALIS-Pterodactyl/archive/refs/he
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "======================================"
-echo "   NEOBRUTALIS Auto-Installer v1.0"
+echo "   NEOBRUTALIS Auto-Installer v1.1"
 echo "======================================"
 
 if [ "$EUID" -ne 0 ]; then
@@ -52,8 +52,8 @@ cp -r "$THEME_DIR/public/"* public/
 cp -r "$THEME_DIR/app/Http/Controllers/Admin/Theme" app/Http/Controllers/Admin/
 
 echo "[4/6] Menambal Database (Membuat tabel & kolom theme)..."
-# Memanggil theme_patch.php yang sekarang berada di folder yang sama dengan script ini
-php artisan tinker "$SCRIPT_DIR/theme_patch.php"
+# Memaksa Tinker keluar setelah eksekusi menggunakan --execute
+php artisan tinker --execute="require '$SCRIPT_DIR/theme_patch.php';"
 
 echo "[5/6] Membangun Frontend (Build)..."
 export NODE_OPTIONS=--openssl-legacy-provider
