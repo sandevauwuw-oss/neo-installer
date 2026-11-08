@@ -52,7 +52,8 @@ cp -r "$THEME_DIR/public/"* public/
 cp -r "$THEME_DIR/app/Http/Controllers/Admin/Theme" app/Http/Controllers/Admin/
 
 echo "[4/6] Menambal Database (Membuat tabel & kolom theme)..."
-php artisan tinker "$SCRIPT_DIR/files/theme_patch.php"
+# Memanggil theme_patch.php yang sekarang berada di folder yang sama dengan script ini
+php artisan tinker "$SCRIPT_DIR/theme_patch.php"
 
 echo "[5/6] Membangun Frontend (Build)..."
 export NODE_OPTIONS=--openssl-legacy-provider
